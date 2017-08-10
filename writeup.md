@@ -134,7 +134,7 @@ The model was able to correctly guess 4 of the 5 traffic signs, which gives an a
 For all images, the classifier is almost 100% certain that it has chosen the right answer. The following are the top 5 predictions. The asterisk next to the sign type denotes the correct label. The only image the classifier got wrong was "Speed limit (70km/h)", which it predicted most likely as "Speed limit (20km/h)".
 
 
-| Probability                   Prediction
+| Probability           |       Prediction                              |
 |:---------------------:|:---------------------------------------------:|          
 | 1.0                   |       Speed limit (20km/h)                    |
 | 3.0098990110627112e-21|       * Speed limit (70km/h)                  |
@@ -142,7 +142,7 @@ For all images, the classifier is almost 100% certain that it has chosen the rig
 | 0.0                   |       Speed limit (50km/h)                    |
 | 0.0                   |       Speed limit (60km/h)                    |
 
-| Probability                   Prediction
+| Probability           |       Prediction                              |
 |:---------------------:|:---------------------------------------------:|          
 | 1.0                   |       * Pedestrians                           |  
 | 2.0162738451272196e-24|       Right-of-way at the next intersection   |
@@ -150,7 +150,7 @@ For all images, the classifier is almost 100% certain that it has chosen the rig
 | 0.0                   |       Speed limit (30km/h)                    |
 | 0.0                   |       Speed limit (50km/h)                    |
  
-| Probability                   Prediction
+| Probability           |        Prediction                             |
 |:---------------------:|:---------------------------------------------:|          
 | 1.0                   |       * Beware of ice/snow  
 | 2.6453078009330833e-12|       Children crossing   
@@ -158,7 +158,7 @@ For all images, the classifier is almost 100% certain that it has chosen the rig
 | 2.3533712676528465e-25|       Right-of-way at the next intersection
 | 2.1147350198113386e-27|       Bicycles crossing  
 
-| Probability                   Prediction
+| Probability           |        Prediction                             |
 |:---------------------:|:---------------------------------------------:|          
 | 1.0                   |       * Priority road                         |
 | 0.0                   |       Speed limit (20km/h)                    |
@@ -166,7 +166,7 @@ For all images, the classifier is almost 100% certain that it has chosen the rig
 | 0.0                   |       Speed limit (50km/h)                    |
 | 0.0                   |       Speed limit (60km/h)                    |
 
-| Probability                   Prediction
+| Probability           |       Prediction                              |
 |:---------------------:|:---------------------------------------------:|          
 | 1.0                   |       * No passing                            | 
 | 0.0                   |       Speed limit (20km/h)                    |

@@ -51,28 +51,11 @@ Here is an exploratory visualization of the data set. Below is a histogram showi
 
 ###Design and Test a Model Architecture
 
-####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
 
-The data was preprocessed with standard techniques. First the mean image across the training set only is computed. Then the standard deviation of all the pixel intensity values in the training set is calculated. The computed mean image is subtracted from the training, validation, and test images, and then each image's pixel intensity values are divdied by the computed standard deviation.
+The data was preprocessed with standard techniques. First the mean image across the training set only is computed. Then the standard deviation of all the pixel intensity values in the training set is calculated. The computed mean image of the training set is subtracted from the training, validation, and test images, and then each image's pixel intensity values are divided by the computed standard deviation.
 
 The above technique serves to center and normalize the training data so that convergence, and thus training, is faster. The pixel values were in the range of [0, 255], and after preprocessing, are in the range of real numbers. Because the values in the dataset are no longer just positive values, during backpropagation, the gradient on the weights doesn't simply consist of only positive or only negative numbers. This means that the weights aren't updated in only the positive or negative direction. In two dimensions, if you visualize the weights being updated only in the positive direction and then in the negative direction, the path to the optimal point that results in the lowest loss value is a zigzag. A straighter line would be more efficient, which is why centering the data and preventing only positive or only negative gradients during each iteration of backpropagation speeds up convergence. The data is normalized to reduce the likelihood of big weight updates. This means a higher learning rate can be used.
-
-
-
-
-![alt text][training_distro]
-
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
 
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
@@ -107,13 +90,15 @@ To train the model, I used the Adam optimizer, a batch size of 128, and 120 epoc
 
 ####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
-I started out with the architecture used in the LeNet lab. My hypothesis was this architecture should be sufficient to obtain a validation set accuracy of at least 0.93 because the traffic sign images are 32x32x3, not that much bigger in terms of width and height from the MNIST dataset. I started out using a learning rate of 0.001, batch size of 128, and 20 epochs to train the classifier. This resulted in 0.891 validation set accuracy. Because there are 43 classes instead of 10 like in MNIST, I decided to increase the capacity of the network by doubling the number of filters in the first convolution layer. I chose to double because my goal was to use an unbounded binary search to find a good number. Fortunately, this doubling bumped up the validation set accuracy. I then doubled the number of filters in the second convolution layer. This also helped. After this, I noticed the training set accuracy approached 1.0 after several epochs whereas the validation set accuracy didn't climb nearly as high and even dropped at times. This was a sign that my classifier was overfitting so I borrowed the idea of using dropout after the fully connected layers from the AlexNet paper. As expected, this closed the gap between the training and validation set accuracies because dropout essentially trains an ensemble of classifiers and averages out the predictions of the ensemble. Dropout also reduces a neuron's dependence on the presence of another neuron, which increases regularization. I decided to add dropout after the convolution layers as well, which further decreased the gap. As expected, this slowed down convergence so I bumped up the number of epochs multiple times. I knew I could keep increasing the number of epochs by looking at the graph of the validation set accuracy versus the number of epochs. If the validation set accuracy showed a slight trend upward, I knew there was more training left to do. Because the number of epochs had increased so much, I wanted to squeeze as much of the network as possible so I experimented with various learning rates until I arrived at 0.0004. In the beginning of training, such a low learning rate is not needed, so I started with 0.001, which decreases to 0.0005, and finally ends up at 0.0004 using the method I described earlier.
+I started out with the LeNet architecture. My hypothesis was this architecture should be sufficient to obtain a validation set accuracy of at least 0.93 because the traffic sign images are 32x32x3, not that much bigger in terms of width and height from the MNIST dataset. I started out using a learning rate of 0.001, batch size of 128, and 20 epochs to train the classifier. This resulted in 0.891 validation set accuracy. Because there are 43 classes instead of 10 like in MNIST, I decided to increase the capacity of the network by doubling the number of filters in the first convolution layer. I chose to double because my goal was to use an unbounded binary search to find a good number. Fortunately, this doubling bumped up the validation set accuracy. I then doubled the number of filters in the second convolution layer. This also helped. After this, I noticed the training set accuracy approached 1.0 after several epochs whereas the validation set accuracy didn't climb nearly as high and even dropped at times. This was a sign that my classifier was overfitting so I borrowed the idea of using dropout after the fully connected layers from the AlexNet paper. As expected, this closed the gap between the training and validation set accuracies because dropout essentially trains an ensemble of classifiers and averages out the predictions of the ensemble. Dropout also reduces a neuron's dependence on the presence of another neuron, which increases regularization. I decided to add dropout after the convolution layers as well, which further decreased the gap. As expected, this slowed down convergence so I bumped up the number of epochs multiple times. I knew I could keep increasing the number of epochs by looking at the graph of the validation set accuracy versus the number of epochs. If the validation set accuracy showed a slight trend upward, I knew there was more training left to do. Because the number of epochs had increased so much, I wanted to squeeze as much of the network as possible so I experimented with various learning rates until I arrived at 0.0004. In the beginning of training, such a low learning rate is not needed, so I started with 0.001, which decreases to 0.0005, and finally ends up at 0.0004 using the method I described earlier.
 
-Using this method, I achieved a 0.952 validation set accuracy, and I felt comfortable enough about the network not having overfitted too much.
+Using this method, I achieved a 0.947 validation set accuracy, and I felt comfortable enough about the network not having overfitted too much.
 My final model results were:
-* training set accuracy of 0.986
-* validation set accuracy of 0.952
-* test set accuracy of 0.938
+* training set accuracy of 0.988
+* validation set accuracy of 0.947
+* test set accuracy of 0.937
+
+I also experimented with smaller batch sizes such as 96 and 48, but the loss values of the batches jumped around a wide range of values. This signaled to me that the batch sizes were too small so I ended up with 128 as the batch size.
 
 Given these results, I'm sure much more can be achieved with this modified LeNet architecture. For example, I didn't experiment with transforming the images into grayscale. Furthermore, I didn't augment the data.
  
@@ -129,47 +114,47 @@ Here are five German traffic signs that I found on the web:
 
 The first image might be difficult to classify because the photo wasn't taken from straight ahead of it. Since I didn't augment the data with any skewing, my classifier might not be able to classify it properly. The same idea applies to the other images. Most of them are pretty bright too, while the training set images are relatively low in brightness. Furthermore, these images are cropped tightly around the sign, whereas the training set images aren't always cropped tightly around the signs.
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set.
 
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Speed limit (70km/h)  | Speed limit (70km/h)   		    			| 
-| Pedestrians        	| Right-of-way at the next intersection 		|
-| Beware of ice/snow	| Children crossing								|
+| Speed limit (70km/h)  | Speed limit (20km/h)   		    			| 
+| Pedestrians        	| Pedestrians                           		|
+| Beware of ice/snow	| Beware of ice/snow							|
 | Priority road	    	| Priority road					 				|
 | No passing			| No passing        							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This does not compare favorably to the accuracy on the test set of 93.8%. However, this is due to this set of 5 signs being rather small compared to the 12,630 images in the test set.
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This does not compare favorably to the accuracy on the test set of 93.7%. However, this is due to this set of 5 signs being rather small compared to the 12,630 images in the test set.
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability.
 
-For all images, the classifier is almost 100% certain that it has chosen the right answer. The following are the top 5 predictions. The asterisk next to the sign type denotes the correct label. The only image the classifier got wrong was "Beware of ice/snow", which it predicted most likely as "Bicycles crossing".
+For all images, the classifier is almost 100% certain that it has chosen the right answer. The following are the top 5 predictions. The asterisk next to the sign type denotes the correct label. The only image the classifier got wrong was "Speed limit (70km/h)", which it predicted most likely as "Speed limit (20km/h)".
 
 
 Probability                   Prediction          
-1.0                           * Speed limit (70km/h)
-1.2198311208789364e-13        Speed limit (30km/h)
-2.956811706415923e-20         Speed limit (20km/h)
+1.0                           Speed limit (20km/h)
+3.0098990110627112e-21        * Speed limit (70km/h)
+1.2289331480190073e-37        Speed limit (30km/h)
 0.0                           Speed limit (50km/h)
 0.0                           Speed limit (60km/h)
 
 For the second image ... 
 Probability                   Prediction
 1.0                           * Pedestrians         
+2.0162738451272196e-24        Right-of-way at the next intersection
 0.0                           Speed limit (20km/h)
 0.0                           Speed limit (30km/h)
 0.0                           Speed limit (50km/h)
-0.0                           Speed limit (60km/h)
 
 Probability                   Prediction
-0.9999997615814209            Bicycles crossing   
-2.199468127628279e-07         Road work           
-9.620956445415018e-20         * Beware of ice/snow     
-5.05926311913774e-27          Children crossing   
-0.0                           Speed limit (20km/h)
+1.0                           * Beware of ice/snow  
+2.6453078009330833e-12        Children crossing   
+4.71578668042455e-13          Slippery road       
+2.3533712676528465e-25        Right-of-way at the next intersection
+2.1147350198113386e-27        Bicycles crossing  
 
 Probability                   Prediction
 1.0                           * Priority road       

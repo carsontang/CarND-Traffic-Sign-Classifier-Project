@@ -136,40 +136,40 @@ For all images, the classifier is almost 100% certain that it has chosen the rig
 
 | Probability                   Prediction
 |:---------------------:|:---------------------------------------------:|          
-| 1.0                           Speed limit (20km/h)
-| 3.0098990110627112e-21        * Speed limit (70km/h)
-| 1.2289331480190073e-37        Speed limit (30km/h)
-| 0.0                           Speed limit (50km/h)
-| 0.0                           Speed limit (60km/h)
+| 1.0                   |       Speed limit (20km/h)                    |
+| 3.0098990110627112e-21|       * Speed limit (70km/h)                  |
+| 1.2289331480190073e-37|       Speed limit (30km/h)                    |
+| 0.0                   |       Speed limit (50km/h)                    |
+| 0.0                   |       Speed limit (60km/h)                    |
 
 | Probability                   Prediction
 |:---------------------:|:---------------------------------------------:|          
-| 1.0                           * Pedestrians         
-| 2.0162738451272196e-24        Right-of-way at the next intersection
-| 0.0                           Speed limit (20km/h)
-| 0.0                           Speed limit (30km/h)
-| 0.0                           Speed limit (50km/h)
+| 1.0                   |       * Pedestrians                           |  
+| 2.0162738451272196e-24|       Right-of-way at the next intersection   |
+| 0.0                   |       Speed limit (20km/h)                    |
+| 0.0                   |       Speed limit (30km/h)                    |
+| 0.0                   |       Speed limit (50km/h)                    |
  
 | Probability                   Prediction
 |:---------------------:|:---------------------------------------------:|          
-| 1.0                           * Beware of ice/snow  
-| 2.6453078009330833e-12        Children crossing   
-| 4.71578668042455e-13          Slippery road       
-| 2.3533712676528465e-25        Right-of-way at the next intersection
-| 2.1147350198113386e-27        Bicycles crossing  
+| 1.0                   |       * Beware of ice/snow  
+| 2.6453078009330833e-12|       Children crossing   
+| 4.71578668042455e-13  |       Slippery road       
+| 2.3533712676528465e-25|       Right-of-way at the next intersection
+| 2.1147350198113386e-27|       Bicycles crossing  
 
 | Probability                   Prediction
 |:---------------------:|:---------------------------------------------:|          
-| 1.0                           * Priority road       
-| 0.0                           Speed limit (20km/h)
-| 0.0                           Speed limit (30km/h)
-| 0.0                           Speed limit (50km/h)
-| 0.0                           Speed limit (60km/h)
+| 1.0                   |       * Priority road                         |
+| 0.0                   |       Speed limit (20km/h)                    |
+| 0.0                   |       Speed limit (30km/h)                    |
+| 0.0                   |       Speed limit (50km/h)                    |
+| 0.0                   |       Speed limit (60km/h)                    |
 
 | Probability                   Prediction
 |:---------------------:|:---------------------------------------------:|          
-| 1.0                           * No passing          
-| 0.0                           Speed limit (20km/h)
-| 0.0                           Speed limit (30km/h)
-| 0.0                           Speed limit (50km/h)
-| 0.0                           Speed limit (60km/h)
+| 1.0                   |       * No passing                            | 
+| 0.0                   |       Speed limit (20km/h)                    |
+| 0.0                   |       Speed limit (30km/h)                    |
+| 0.0                   |       Speed limit (50km/h)                    |
+| 0.0                   |       Speed limit (60km/h)                    |

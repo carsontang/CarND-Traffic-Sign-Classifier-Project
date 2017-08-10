@@ -47,7 +47,7 @@ signs data set:
 
 Here is an exploratory visualization of the data set. Below is a histogram showing how the number of training samples per class. It is clear from the visualization that the number per class is uneven, which may make the convolutional neural network more easily recognize some classes more than the others.
 
-![alt text][image1]
+![Training distribution][training_distro]
 
 ###Design and Test a Model Architecture
 
@@ -60,7 +60,7 @@ The above technique serves to center and normalize the training data so that con
 
 
 
-![alt text][image2]
+![alt text][training_distro]
 
 As a last step, I normalized the image data because ...
 

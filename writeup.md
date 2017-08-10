@@ -27,6 +27,11 @@ The goals / steps of this project are the following:
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
 [image7]: ./examples/placeholder.png "Traffic Sign 4"
 [image8]: ./examples/placeholder.png "Traffic Sign 5"
+[testimg1]: ./examples/no_passing.jpg "No passing"
+[testimg2]: ./examples/pedestrians.jpg "Pedestrians"
+[testimg3]: ./examples/priority_road.jpg "Priority Road"
+[testimg4]: ./examples/seventy.jpg "70 km/h"
+[testimg5]: ./examples/beware_of_ice_snow.jpg "Beware of ice/snow"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -132,8 +137,8 @@ Given these results, I'm sure much more can be achieved with this modified LeNet
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][https://raw.githubusercontent.com/carsontang/CarND-Traffic-Sign-Classifier-Project/master/examples/no_passing.jpg] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][testimg1] ![alt text][testimg2] ![alt text][testimg3] 
+![alt text][testimg4] ![alt text][testimg5]
 
 The first image might be difficult to classify because ...
 
